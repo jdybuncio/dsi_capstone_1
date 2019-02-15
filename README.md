@@ -1,5 +1,7 @@
 **********************************************
-# Predicting Relationship Status Using Student Educational Data
+# Does "Work-Life Balance" Matter?
+
+## Predicting Relationship Status Using Student Educational Data
 **********************************************
 
 #### Author: Taite Sandefer
@@ -10,15 +12,13 @@
 
 As a manager, it might be important to consider how your expectations of employees might impact their ability to maintain a healthy work-life balance, since worker productivity could depend on the degree to which basic needs have been met. 
 
-    To borrow from Aristotle, "man is by nature a social animal."
+To borrow from Aristotle, "man is by nature a social animal."
 
 So, it seems that social connection might qualify as a basic human need that impacts productivity.
 
 But how do we help each other find the right level of social connection, so that we can thrive in that sweet spot between distraction and isolation?
 
-    Aristotle also claims that "society precedes the individual," and that 
-    "anyone who either cannot lead the common life or is so self-sufficient as not to need to, 
-    and therefore does not partake of society, is either a beast or a god."
+Aristotle also claims that "society precedes the individual," and that "anyone who either cannot lead the common life or is so self-sufficient as not to need to, and therefore does not partake of society, is either a beast or a god."
 
 This two-tailed postulate suggests that people who are not actively social will tend to be on the extremes when it comes to performance. In general, is this true? When people develop close relationships with others, is their overall productivity inherently different from those who aren't as connected to others?
 
@@ -63,6 +63,13 @@ famsize, Pstatus, Medu, Fedu, Mjob, Fjob, reason, guardian, schoolsup, famsup, p
 *Eductional Performance and Outcomes*
 studytime, failures, activities, higher, freetime, romantic, G1, G2, G3, absences
 
+## Math Students: Final Grade Distributions by Relationship Status
+![](m_plot.png)
+
+
+## Portuguese Students: Final Grade Distributions by Relationship Status
+![](p_plot.png)
+
 
 # Approach
 
@@ -102,7 +109,7 @@ Thus, we use a combination of accuracy and precision to determine which model pe
 
 For both Math and Portuguese students, the 3rd model that I tested performed the best, which contained only features on educational outcomes.
 
-This 3rd model used measures on the following features:
+This best model used measures on the following features:
     
     ['absences', 'G3', 'activities', 'higher', 'studytime_2', 'studytime_3', 'studytime_4', 'failures_1', 'failures_2', 'failures_3', 'freetime_2', 'freetime_3', 'freetime_4', 'freetime_5', 'health_2', 'health_3', 'health_4', 'health_5']
 
@@ -132,9 +139,11 @@ However, once I increased my threshold for prediction from 0.5 to 0.7, I found e
 
 ![](p_roc_test.png)
 
+## Math Confusion Matrix
+![](m_conf.png)
 
-
-
+## Portuguese Confusion Matrix
+![](p_conf.png)
 
 ## Model Predictions & Interpretation
 
