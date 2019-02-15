@@ -28,12 +28,10 @@ For now, it might be useful to look at smaller-scale relationships between produ
 
 Can we predict a student's relationship status based on their academic performance and outcomes?
 
-This project aims to explore how work-life balance impacts performance by examining whether certain performance/productivity measures (e.g. high school students' final grade in a given subject) are useful in predicting measures of social connection (e.g. whether a student is in a romantic relationship).
-
 ## MVP
 1. Encode features so that data can be analyzed via logistic regression
 2. Leverage Cross Validation to aid in model/feature selection
-3. Using the CV selected model, conduct logistic regression analysis to explore the relationship between relationship status and educational outcomes/characteristics
+3. Using the CV selected model, conduct logistic regression analysis to explore how well the 'best' model can predict relationship status using educational outcomes/characteristics
 
 # The Data: EDA
 
@@ -104,7 +102,7 @@ Since the hypothesis that students who are in a relationship simply perform diff
 
 However, based on the assumption that students who are in a relationship are generally more "rare" (with odds of 1:2) than those who are not in a relationship, we might improve our accuracy by tending to predict a student is not in a relationship in the face of uncertainty.
 
-Thus, it seems that we would prefer to minimize the false positive rate (FPR), as we would likely make more "correct" predictions if we tended to predict/guess that a student is NOT in a relationship in situations when we are less certain (the predicted probability is closer to 0.5), just based on the [intuitive/estimated] likelihood that the proportion of single students in the population is fairly high.
+It seems that we would prefer to minimize the false positive rate (FPR), as we would likely make more "correct" predictions if we tended to predict/guess that a student is NOT in a relationship in situations when we are less certain (the predicted probability is closer to 0.5), just based on the intuitive likelihood that the proportion of single students in the population is fairly high.
 
 Thus, we use a combination of accuracy and precision to determine which model performed best. 
 
