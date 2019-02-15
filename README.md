@@ -102,6 +102,12 @@ Thus, we use a combination of accuracy and precision to determine which model pe
 
 For both Math and Portuguese students, the 3rd model that I tested performed the best, which contained only features on educational outcomes.
 
+This 3rd model used measures on the following features:
+    
+    ['absences', 'G3', 'activities', 'higher', 'studytime_2', 'studytime_3', 'studytime_4', 'failures_1', 'failures_2', 'failures_3', 'freetime_2', 'freetime_3', 'freetime_4', 'freetime_5', 'health_2', 'health_3', 'health_4', 'health_5']
+
+Using a 0.5 predicted probability threshold, we obtained the following evaluation metrics with this model:
+
     Math Students: 57% accuracy, 42% precision
     Portuguese Students: 59% accuracy, 46% precision
 
@@ -114,13 +120,20 @@ However, once I increased my threshold for prediction from 0.5 to 0.7, I found e
     
 # Results & Analysis
 
-## Best Model
+## Best Model: ROC Curves on Training Data 
+
+![](m_roc_train.png)
+
+![](p_roc_train.png)
+
+## Best Model: ROC Curves on Test Data 
+
+![](m_roc_test.png)
+
+![](p_roc_test.png)
 
 
-CONFUSION MATRICES:
 
-
-ROC CURVES:
 
 
 ## Model Predictions & Interpretation
@@ -134,7 +147,6 @@ Focusing on students in Portuguese courses, the coefficients yielded from our be
 2. Explore predictive abilities of educational characteristics & outcomes on other social connection statuses, such as "Pstatus," which reflects whether or not the student's parents are living in the same household
 
 2. Take IV/Proxy variable into account so we can generalize the information we've gathered from this evidence regarding these Portuguese high school students' social connectivity and educational outcomes towards larger populations, such as all high school students, or all humans working towards a task.
-
 
 
 ## Citation
