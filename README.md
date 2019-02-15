@@ -53,13 +53,13 @@ For both groups, the odds of being in a relationship were roughly 1:2
 ## Feature Categories
 
 * Demographic Characteristics:
- * school, sex, age, address, traveltime, internet, health
+      * school, sex, age, address, traveltime, internet, health
 
 * Social Connection:
- * famsize, Pstatus, Medu, Fedu, Mjob, Fjob, reason, guardian, schoolsup, famsup, paid, nursery, famrel, goout, Dacl, Walc
+      * famsize, Pstatus, Medu, Fedu, Mjob, Fjob, reason, guardian, schoolsup, famsup, paid, nursery, famrel, goout, Dacl, Walc
 
 * Eductional Performance and Outcomes:
-    * studytime, failures, activities, higher, freetime, romantic, G1, G2, G3, absences
+      * studytime, failures, activities, higher, freetime, romantic, G1, G2, G3, absences
 
 ## Math Students: Final Grade Distributions by Relationship Status
 ![](m_plot.png)
