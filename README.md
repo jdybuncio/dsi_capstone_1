@@ -52,15 +52,15 @@ Some of the data was obtained from school records, while information for other f
 
 For both groups, the odds of being in a relationship were roughly 1:2
 
-## Features
+## Feature Categories
 
-*Demographic Characteristics:*
+1. Demographic Characteristics:
 school, sex, age, address, traveltime, internet, health
 
-*Social Connection*
+2. Social Connection:
 famsize, Pstatus, Medu, Fedu, Mjob, Fjob, reason, guardian, schoolsup, famsup, paid, nursery, famrel, goout, Dacl, Walc
 
-*Eductional Performance and Outcomes*
+3. Eductional Performance and Outcomes:
 studytime, failures, activities, higher, freetime, romantic, G1, G2, G3, absences
 
 ## Math Students: Final Grade Distributions by Relationship Status
@@ -81,9 +81,11 @@ Using SKLearn's LogisticRegression, since we are using our data to predict the p
 
 Using StratifiedKFold because it preserves the percentage of samples from each class.
 
-    Full model uses ~69 predictors
-    Secondary model uses 29 predictors, with fewer social features in the model 
-    Third model uses 18 predictors, focusing on outcomes only
+Evaluating the performance of 3 models with varying features:
+
+    1. Full model uses all 69 predictors
+    2. Secondary model uses 29 predictors, using demographic and educational performance features
+    3. Third model uses 18 predictors, focusing on outcomes only
 
 ### Model Specs
 
@@ -92,7 +94,6 @@ In logistic regression, it's important to specify:
     class_weight = 'balanced'
     
 since the odds are 1:2 for being in the relationship class
-
 
 
 ## Model Evaluation
@@ -111,7 +112,7 @@ For both Math and Portuguese students, the 3rd model that I tested performed the
 
 This best model used measures on the following features:
     
-    ['absences', 'G3', 'activities', 'higher', 'studytime_2', 'studytime_3', 'studytime_4', 'failures_1', 'failures_2', 'failures_3', 'freetime_2', 'freetime_3', 'freetime_4', 'freetime_5', 'health_2', 'health_3', 'health_4', 'health_5']
+        ['absences', 'G3', 'activities', 'higher', 'studytime_2', 'studytime_3', 'studytime_4', 'failures_1', 'failures_2', 'failures_3', 'freetime_2', 'freetime_3', 'freetime_4', 'freetime_5', 'health_2', 'health_3', 'health_4', 'health_5']
 
 Using a 0.5 predicted probability threshold, we obtained the following evaluation metrics with this model:
 
