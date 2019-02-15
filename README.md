@@ -151,11 +151,13 @@ Focusing on students in Portuguese courses, the coefficients yielded from our be
 
 
 ## Future Exploration / Research
-1. Further explore the coefficients and confidence intervals for interpretation
+1. Further explore the coefficients and confidence intervals for interpretation 
 
-2. Explore predictive abilities of educational characteristics & outcomes on other social connection statuses, such as "Pstatus," which reflects whether or not the student's parents are living in the same household
+2. Supplement Logistic Regression with AB testing
 
-2. Take IV/Proxy variable into account so we can generalize the information we've gathered from this evidence regarding these Portuguese high school students' social connectivity and educational outcomes towards larger populations, such as all high school students, or all humans working towards a task.
+3. Explore predictive abilities of educational characteristics & outcomes on other social connection statuses, such as "Pstatus," which reflects whether or not the student's parents are living in the same household
+
+4. Take IV/Proxy variable into account so we can generalize the information we've gathered from this evidence regarding these Portuguese high school students' social connectivity and educational outcomes towards larger populations, such as all high school students, or all humans working towards a task.
 
 
 ## Citation
