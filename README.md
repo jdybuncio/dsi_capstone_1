@@ -45,20 +45,20 @@ Some of the data was obtained from school records, while information for other f
 
 ## Groups
 
-395 students in Math courses
-649 students in Portuguese courses
+* 395 students in Math courses
+* 649 students in Portuguese courses
 
 For both groups, the odds of being in a relationship were roughly 1:2
 
 ## Feature Categories
 
-1. Demographic Characteristics:
+* Demographic Characteristics:
 school, sex, age, address, traveltime, internet, health
 
-2. Social Connection:
+* Social Connection:
 famsize, Pstatus, Medu, Fedu, Mjob, Fjob, reason, guardian, schoolsup, famsup, paid, nursery, famrel, goout, Dacl, Walc
 
-3. Eductional Performance and Outcomes:
+* Eductional Performance and Outcomes:
 studytime, failures, activities, higher, freetime, romantic, G1, G2, G3, absences
 
 ## Math Students: Final Grade Distributions by Relationship Status
