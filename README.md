@@ -142,12 +142,17 @@ However, once I increased my threshold for prediction from 0.5 to 0.7, I found e
 ![](m_conf.png)
 
 ## Portuguese Confusion Matrix
-![](p_conf.png)
+![](port_conf.png)
 
 ## Model Predictions & Interpretation
 
 Focusing on students in Portuguese courses, the coefficients yielded from our best model were -0.558 for percentage points in the final grade and -0.657 for whether or not a student wanted to pursue higher education. This implies that higher grades do increase the odds that a student is in a relationship, and that a student's desire to pursue higher education increases these odds as well. 
 
+### Math Student Coefficients:
+{'absences': 0.038, 'G3': -1.166, 'activities': 0.134, 'higher': -1.11, 'studytime_2': 0.974, 'studytime_3': 1.134, 'studytime_4': -0.213, 'failures_1': -0.182, 'failures_2': 1.231, 'failures_3': -0.198, 'freetime_2': 0.925, 'freetime_3': 0.361, 'freetime_4': 0.513, 'freetime_5': 1.094, 'health_2': -0.134, 'health_3': 0.234, 'health_4': -0.2, 'health_5': 0.122}
+
+### Portuguese Student Coefficients:
+{'absences': 0.044, 'G3': -0.558, 'activities': 0.229, 'higher': -0.657, 'studytime_2': 0.63, 'studytime_3': 1.0, 'studytime_4': -0.62, 'failures_1': 0.606, 'failures_2': 0.131, 'failures_3': -0.087, 'freetime_2': 0.635, 'freetime_3': 0.253, 'freetime_4': 0.046, 'freetime_5': 0.663, 'health_2': -0.294, 'health_3': -0.215, 'health_4': -0.508, 'health_5': -0.002}
 
 ## Future Exploration / Research
 1. Further explore the coefficients and confidence intervals for interpretation 
