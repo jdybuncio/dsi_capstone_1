@@ -43,16 +43,16 @@ The University of Minho's Paulo Cortez and Alice Silva collected data regarding 
 
 Some of the data was obtained from school records, while information for other features was gathered through questionnaires conducted by Cortez and Silva.
 
-### EDA
+# EDA
 
-# Groups
+## Groups
 
 395 students in Math courses
 649 students in Portuguese courses
 
 For both groups, the odds of being in a relationship were roughly 1:2
 
-# Features
+## Features
 
 *Demographic Characteristics:*
 school, sex, age, address, traveltime, internet, health
