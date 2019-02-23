@@ -20,7 +20,7 @@ from post_split_eda import split_train_holdout, post_split_eda
 # from pandas.plotting import scatter_matrix
 
 def split_train_holdout(df):
-
+    pass
 
 
 def main():
