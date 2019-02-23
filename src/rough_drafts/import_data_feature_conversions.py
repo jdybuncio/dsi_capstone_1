@@ -158,7 +158,7 @@ def make_dummy_df(df, categorical_vars):
     for dummy_df in dummy_df_lst:
         df = df.join(dummy_df)
     # Drop original category columns (no longer needed)
-    df.drop(columns=, axis=1, inplace=True)
+    df.drop(columns=categorical_vars, axis=1, inplace=True)
     return potential_baselines, df
 
 # Examine baselines

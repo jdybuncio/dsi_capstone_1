@@ -1,33 +1,19 @@
-from CV_logistic import select_model_logisticCV
-from encoding_cleaning_data import clean_data
-from logistic_regression_analysis import analyze_logistic_regression
-from post_split_eda import conduct_eda
+import data_prep as dp
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import statsmodels.api as sm
-import seaborn as sns
-from sklearn.base import BaseEstimator, TransformerMixin, RegressorMixin, clone
+from sklearn.metrics import train_test_split
 
-from sklearn.metrics import accuracy_score, classification_report, roc_curve, cross_val_score, train_test_split
-from sklearn import metrics
+def split_for_holdout(m_df, p_df):
+    # Make an initial training/holdout split so we can test how generalizable our model is later
+    # Using an 80/20 split
+    m_train, m_holdout = train_test_split(m_df, test_size=0.2, random_state=42)
+    p_train, p_holdout = train_test_split(p_df, test_size=0.2, random_state=42)
+    return m_train, m_holdout, p_train, p_holdout
 
-from sklearn.linear_model import LogisticRegression, LogisticRegressionCV, LinearRegression, Ridge, Lasso
-from sklearn.model_selection import StratifiedKFold, train_test_split, KFold, GridSearchCV, RepeatedStratifiedKFold
-
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import FeatureUnion
-
-from pandas.plotting import scatter_matrix
-
-%matplotlib inline
-
-
-
-
-def main():
+def post_split_eda():
     pass
 
+
 if __name__ == '__main__':
-    main()
+    post_split_eda()

@@ -1,10 +1,6 @@
 import numpy as np
 import pandas as pd
-import matplotlib.ply as plt
 import sys
-
-
-%matplotlib inline
 
 def import_student_data():
     # Import data from math and from portuguese students
@@ -42,7 +38,7 @@ def check_data_struct(m_df, p_df):
     structure_booleans = [m_shape, p_shape, m_nulls, p_nulls, same_columns]
     issue_statement = [m_shape_issue, p_shape_issue, m_null_issue, p_null_issue, columns_issue]
 
-    if structure_booleans.all():
+    if all(structure_booleans):
         print("Initial Data looks good. Proceed!")
         return True
     else:
@@ -51,7 +47,7 @@ def check_data_struct(m_df, p_df):
                 print("WARNING: Issue with {}".format(issue_statement[idx]))
         return False
 
-def check_values_counts_across_dfs(cols):
+def check_values_counts_across_dfs(m_df, p_df, cols):
     '''
     Check to make sure we're getting the same number of categories
     for categorical vars and same dummy vars across both math/port dataframes
@@ -64,7 +60,7 @@ def check_values_counts_across_dfs(cols):
         if m_unique == p_unique or col in ['absences', 'G1', 'G2', 'G3']:
             # Should be true for all except: absences, G1, G2, and G3 (ALL CONTINUOUS, ALL OK)
             # Don't return yet, need to make one more check below...
-            continue
+            pass
         else:
             # If not matching or not one of the cols mentioned above, print and exit script
             print('{0}: {1}, {2}'.format(col, m_unique, p_unique))
@@ -102,9 +98,9 @@ def make_encoding_type_lists(m_df, p_df):
     # Since we know columns are same, the resulting lists should work for port df too
     cols = m_df.columns
     # Check to make sure unique values are good across the two dfs
-    check1 = check_values_counts_across_dfs(cols)
+    check1 = check_values_counts_across_dfs(m_df, p_df, cols)
     if check1:
-        continue
+        pass
     else:
         sys.exit("WARNING: issue with matching unique values for columns across math/port!")
 
@@ -127,7 +123,7 @@ def make_encoding_type_lists(m_df, p_df):
     # Run hard-coded check on col cats
     check2 = check_col_cats(binary_vars, categorical_vars, appx_cont_vars)
     if check2:
-        continue
+        pass
     else:
         sys.exit("WARNING: issue with column groups for encoding!")
     # Return the lists
@@ -141,7 +137,7 @@ def make_dtype_dfs(df, binary_vars, categorical_vars, appx_cont_vars):
     return b_df, cat_df, cont_df
 
 #Making function so that I can do this easily for both data sets
-def encode_dummies(df, binary_vars):
+def make_binary_dummies(df, binary_vars):
     encoding_dict = dict()
     for col_name in binary_vars:
         new_col_name = col_name + '_d'
@@ -167,7 +163,7 @@ def encode_dummies(df, binary_vars):
         encoding_dict[col_name] = col_dict
     df.drop(columns=binary_vars, axis=1, inplace=True)
 
-    # Remove _d in column names...
+    # Remove _d in column names... Maybe take this out? Not necessary if we can just put in same name... Come back to this!
     cols = df.columns
     cols = [col[:-2] for col in cols]
     df.columns = cols
@@ -175,7 +171,7 @@ def encode_dummies(df, binary_vars):
     return df, encoding_dict
 
 # Make multi-value dummy dataframes
-def make_dummy_df(df, categorical_vars):
+def make_cat_dummies_df(df, categorical_vars):
     # Create empty list that we can insert dummy dataframes into - iterate through to join w/ main df - pick all but last column (One-Hot Encoding)
     dummy_df_lst = []
     potential_baselines = dict()
@@ -188,29 +184,50 @@ def make_dummy_df(df, categorical_vars):
     for dummy_df in dummy_df_lst:
         df = df.join(dummy_df)
     # Drop original category columns (no longer needed)
-    df.drop(columns=, axis=1, inplace=True)
-    return potential_baselines, df
-
-
-
-
-def encode_binary_dummies():
-    pass
-
+    df.drop(columns=categorical_vars, axis=1, inplace=True)
+    return df, potential_baselines
 
 def join_dfs(cont_df, bin_df, cat_df):
     # JOIN 'EM TOGETHER!
     df = cont_df.join(bin_df.join(cat_df))
     return df
 
-def main():
+def show_potential_baselines(baselines):
+    '''
+    baselines: a dictionary
+        --> keys = categorical column/feature names
+        --> values = list of unique values for a given column/feature name (potential baselines)
+    '''
+    for key in baselines.keys():
+        print(key, baselines[key])
+
+def selected_baseline_list():
+    '''
+    Hardcoded list of chosen baseline values for one-hot encoding in categorical features
+    '''
+    baselines = ['Medu_0', 'Fedu_0', 'Mjob_other', 'Fjob_other', 'reason_other', 'guardian_other', 'traveltime_1', 'studytime_1', 'failures_0', 'famrel_1', 'freetime_1', 'goout_1', 'Dalc_1', 'Walc_1', 'health_1']
+    return baselines
+
+def convert_grades_to_perc(m_df, p_df):
+    '''
+    Takes both dfs, converts grade features [known to be 'G1', 'G2', 'G3'] to percentage (out of 20)
+    Returns each df with converted grade features
+
+    NOT likely to use in future, since it reduces interpretability in logistic regression analysis
+    '''
+    for test in ['G1', 'G2', 'G3']:
+        m_df[test] = np.where(m_df[test] == 0, 0, m_df[test]/20)
+        p_df[test] = np.where(p_df[test] == 0, 0, p_df[test]/20)
+    return m_df, p_df
+
+def prep_data():
     # Import both dataframes
     m_df, p_df = import_student_data()
 
     # Check to make sure initial data import looks good. Stop execution if issue arises.
     initial_data_status = check_data_struct(m_df, p_df)
     if initial_data_status:
-        continue
+        pass
     else:
         sys.exit("ERROR: Issue with initial data import! Fix & rerun to continue.")
 
@@ -220,22 +237,26 @@ def main():
     m_bin_df, m_cat_df, m_cont_df = make_dtype_dfs(m_df, binary_vars, categorical_vars, appx_cont_vars)
     p_bin_df, p_cat_df, p_cont_df = make_dtype_dfs(p_df, binary_vars, categorical_vars, appx_cont_vars)
 
-    # Use function to get new encoded dummy dfs and encoding dictionaries
-    m_bin_df, m_encoding_dict = encode_dummies(m_bin_df, binary_vars)
-    p_bin_df, p_encoding_dict = encode_dummies(p_bin_df, binary_vars)
+    # Prevent false positive from tripping 'SettingWithACopyWarning' in binary function
+    pd.options.mode.chained_assignment = None  # default='warn'
 
-    # Examine baselines
-    m_baselines, m_cat_df = make_dummy_df(m_cat_df, categorical_vars)
-    p_baselines, p_cat_df = make_dummy_df(p_cat_df, categorical_vars)
+    # Use function to get encoded dummy dfs (and encoding dictionaries!)
+    m_bin_df, m_encoding_dict = make_binary_dummies(m_bin_df, binary_vars)
+    p_bin_df, p_encoding_dict = make_binary_dummies(p_bin_df, binary_vars)
 
-    # JOIN 'EM TOGETHER!
+    # Get encoded categorical dummy dfs (and list of potential baselines)
+    m_cat_df, m_baselines = make_cat_dummies_df(m_cat_df, categorical_vars)
+    p_cat_df, m_baselines = make_cat_dummies_df(p_cat_df, categorical_vars)
+
+    # Join em together to get fully encoded dfs! Assign to same variable names from earlier
     m_df = join_dfs(m_cont_df, m_bin_df, m_cat_df)
     p_df = join_dfs(p_cont_df, p_bin_df, p_cat_df)
 
-
-
-
-
+    # Return the two encoded dfs...?
+    return m_df, p_df
 
 if __name__ == '__main__':
-    main()
+    m_df, p_df = prep_data()
+    
+    print(m_df.head())
+    print(p_df.head())
