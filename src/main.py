@@ -1,7 +1,8 @@
 from CV_logistic import select_model_logisticCV
-from encoding_cleaning_data import clean_data
+from data_prep import import_student_data 
 from logistic_regression_analysis import analyze_logistic_regression
 from post_split_eda import conduct_eda
+
 
 import numpy as np
 import pandas as pd
@@ -22,6 +23,9 @@ from sklearn.pipeline import FeatureUnion
 from pandas.plotting import scatter_matrix
 
 %matplotlib inline
+
+
+
 
 def main():
     # Import data from math and from portuguese students
