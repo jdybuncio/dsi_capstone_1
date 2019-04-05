@@ -1,5 +1,10 @@
+
 # Does Work-Life Balance Matter?
-![](images/genius_header2.png)
+
+<p align="center">
+  <img src="images/header.jpg" width = 900 height = 60>
+</p>
+
 ## Using Student Educational Data to Predict Relationship Status
 
 Capstone I Project for Galvanize Data Science Immersive
@@ -26,8 +31,6 @@ by Taite Sandefer
 - [Conclusion](#model-selection)
 - [Acknowledgements](#acknowledgements])
 
-
-![](images/genius_biggest_collection.png)
 
 # Introduction
 
@@ -87,21 +90,26 @@ For both groups, the odds of being in a relationship were roughly 1:2
 
       studytime, failures, activities, higher, freetime, romantic, G1, G2, G3, absences
 
-![](images/math_pairplot.png)
 
-![](images/port_pairplot.png)
+<p align="center">
+  <img src="images/math_pairplot.png" width = 400>
+  <img src="images/port_pairplot.png" width = 400>
+</p>
 
 So, as we can see from both of these plots, the grade features (G1, G2, and G3) are strongly correlated. Since these variables each represent a given students' grade in the class at different periods throughout the year, it seems reasonable to simply use the final grade (G3) for the purposes of this analysis.
 
 ## Final Grade Distributions by Relationship Status
 
 ### Math Dataset
-![](images/m_g3_dist.png)
+<p align="center">
+  <img src="images/m_g3_dist.png" width = 400>
+</p>
 
 
 ### Portuguese Dataset
-![](images/p_g3_dist.png)
-
+<p align="center">
+  <img src="images/p_g3_dist.png" width = 400>
+</p>
 
 # Approach
 
@@ -161,32 +169,41 @@ However, once I increased my threshold for prediction from 0.5 to 0.7, I found e
 # Results & Analysis
 
 ## Best Model: ROC Curves on Training Data
-
-![](m_roc_train.png)
-
-![](p_roc_train.png)
+<p align="center">
+  <img src="images/m_roc_train.png" width = 400>
+  <img src="images/p_roc_train.png" width = 400>
+</p>
 
 ## Best Model: ROC Curves on Test Data
 
-![](m_roc_test.png)
-
-![](p_roc_test.png)
+<p align="center">
+  <img src="images/m_roc_test.png" width = 400>
+  <img src="images/p_roc_test.png" width = 400>
+</p>
 
 ## Math Confusion Matrix
-![](m_conf.png)
+<p align="center">
+  <img src="images/m_conf_mat.png" width = 400>
+</p>
 
 ## Portuguese Confusion Matrix
-![](port_conf.png)
+<p align="center">
+  <img src="images/p_conf_mat.png" width = 400>
+</p>
 
 ## Coefficients and Initial Interpretation
 
 Focusing on students in Portuguese courses, the coefficients yielded from our best model were -0.558 for percentage points in the final grade and -0.657 for whether or not a student wanted to pursue higher education. This implies that higher grades do increase the odds that a student is in a relationship, and that a student's desire to pursue higher education increases these odds as well.
 
 ### Coefficients
-![](images/coeffs_bar.png)
+<p align="center">
+  <img src="images/coeffs_bar.png" width = 400>
+</p>
 
 ### Change in Odds of Being in a Relationship
-![](images/delta_odds_bar.png)
+<p align="center">
+  <img src="images/delta_odds_bar.png" width = 400>
+</p>
 
 ## Significant Coefficients
 
