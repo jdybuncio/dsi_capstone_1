@@ -103,18 +103,13 @@ For both groups, the odds of being in a relationship were roughly 1:2
 
 So, as we can see from both of these plots, the grade features (G1, G2, and G3) are strongly correlated. Since these variables each represent a given students' grade in the class at different periods throughout the year, it seems reasonable to simply use the final grade (G3) for the purposes of this analysis.
 
-## Final Grade Distributions by Relationship Status
+### Final Grade Distributions by Relationship Status
 
-### Math Dataset
 <p align="center">
   <img src="images/m_g3_dist.png" width = 400>
-</p>
-
-
-### Portuguese Dataset
-<p align="center">
   <img src="images/p_g3_dist.png" width = 400>
 </p>
+
 
 
 # Model Selection
@@ -222,16 +217,18 @@ Focusing on students in Portuguese courses, the coefficients yielded from our be
 ## Significant Coefficients
 
 ### Math Dataset
+
 |Feature | Significance Level | Percentage Change in Odds of being in a Relationship|
-|--- | --- |--- | --- |
+|--- | --- |--- |
 |Had 2 Prior Class Failures| 1% | +240.1%|
 |Final Math Grade| 1% | -5.8%|
 |Absences| 1% | +3.9%|
 |Study >10hrs Weekly| 10% | -18.8%|
 
 ### Portuguese Dataset
+
 |Feature | Significance Level | Percentage Change in Odds of being in a Relationship|
-|--- | --- |--- | --- |
+|--- | --- |--- |
 |Absences| 1% | +4.4%|
 |Had 2 Prior Class Failures| 5% | +77.6%|
 |Study >10hrs Weekly| 5% | -45.6%|
