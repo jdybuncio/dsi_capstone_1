@@ -255,8 +255,14 @@ def prep_data():
     # Return the two encoded dfs...?
     return m_df, p_df
 
+def save_preped_data(df, filename):
+    df.to_csv('../data/prepped_{0}_data.csv'.format(filename))
+
 if __name__ == '__main__':
     m_df, p_df = prep_data()
-    
-    print(m_df.head())
-    print(p_df.head())
+
+    save_preped_data(m_df, 'math')
+    save_preped_data(p_df, 'port')
+
+    # print(m_df.shape)
+    # print(p_df.shape)

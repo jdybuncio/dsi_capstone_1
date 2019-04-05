@@ -1,16 +1,39 @@
-**********************************************
-# Does "Work-Life Balance" Matter?
+# Does Work-Life Balance Matter?
+![](images/genius_header2.png)
+## Using Student Educational Data to Predict Relationship Status
 
-## Predicting Relationship Status Using Student Educational Data
-**********************************************
+Capstone I Project for Galvanize Data Science Immersive
 
-#### Author: Taite Sandefer
-### Last Updated: 4/3/19
-***
+by Taite Sandefer
 
-# Background
+*Last Updated: 4/4/19*
 
-As a manager, it might be important to consider how your expectations of employees might impact their ability to maintain a healthy work-life balance, since worker productivity could depend on the degree to which basic needs have been met. 
+## Table of Contents
+- [Introduction](#introduction)
+  - [Background](#background)
+  - [The Data](#the-data)
+  - [Question & Hypothesis](#question-&-hypothesis)
+  - [Methodology](#methodology)
+- [Exploratory Data Analysis](#exploratory-data-analysis)
+- [Model Selection](#model-selection)
+  - [Test Metric: F1 Score](#test-metric-f1-score)
+  - [Feature Selection](#model-selection)
+  - [Hyperparameter Tuning](#hyperparameter-tuning)
+- [Chosen Model](#chosen-model)
+  - [Specifications](#specifications)
+  - [Model Assessment](#model-assessment)
+  - [Results & Interpretation](#results-&-interpretation)
+- [Conclusion](#model-selection)
+- [Acknowledgements](#acknowledgements])
+
+
+![](images/genius_biggest_collection.png)
+
+# Introduction
+
+## Background
+
+As a manager, it might be important to consider how your expectations of employees might impact their ability to maintain a healthy work-life balance, since worker productivity could depend on the degree to which basic needs have been met.
 
 To borrow from Aristotle, "man is by nature a social animal."
 
@@ -22,7 +45,7 @@ Aristotle also claims that "society precedes the individual," and that "anyone w
 
 This two-tailed postulate suggests that people who are not actively social will tend to be on the extremes when it comes to performance. In general, is this true? When people develop close relationships with others, is their overall productivity inherently different from those who aren't as connected to others?
 
-# Question
+# Question & Hypothesis
 
 For now, it might be useful to look at smaller-scale relationships between productivity and social connection. While we might not be able to collect data on all humans that precisely measures productivity and social activity, there is available data on social, demographic, and educational features that we might be able to leverage so that we might have a better understanding of this relationship.
 
@@ -53,23 +76,31 @@ For both groups, the odds of being in a relationship were roughly 1:2
 ## Feature Categories
 
 * Demographic Characteristics:
-       
+
        school, sex, age, address, traveltime, internet, health
 
 * Social Connection:
-      
+
       famsize, Pstatus, Medu, Fedu, Mjob, Fjob, reason, guardian, schoolsup, famsup, paid, nursery, famrel, goout, Dacl, Walc
 
 * Eductional Performance and Outcomes:
-      
+
       studytime, failures, activities, higher, freetime, romantic, G1, G2, G3, absences
 
-## Math Students: Final Grade Distributions by Relationship Status
-![](m_plot.png)
+![](images/math_pairplot.png)
+
+![](images/port_pairplot.png)
+
+So, as we can see from both of these plots, the grade features (G1, G2, and G3) are strongly correlated. Since these variables each represent a given students' grade in the class at different periods throughout the year, it seems reasonable to simply use the final grade (G3) for the purposes of this analysis.
+
+## Final Grade Distributions by Relationship Status
+
+### Math Dataset
+![](images/m_g3_dist.png)
 
 
-## Portuguese Students: Final Grade Distributions by Relationship Status
-![](p_plot.png)
+### Portuguese Dataset
+![](images/p_g3_dist.png)
 
 
 # Approach
@@ -93,7 +124,7 @@ Evaluating the performance of 3 models with varying features:
 In logistic regression, it's important to specify:
 
     class_weight = 'balanced'
-    
+
 since the odds are 1:2 for being in the relationship class
 
 
@@ -107,12 +138,12 @@ However, based on the assumption that students who are in a relationship are gen
 
 It seems that we would prefer to minimize the false positive rate (FPR), as we would likely make more "correct" predictions if we tended to predict/guess that a student is NOT in a relationship in situations when we are less certain (the predicted probability is closer to 0.5), just based on the intuitive likelihood that the proportion of single students in the population is fairly high.
 
-Thus, we use a combination of accuracy and precision to determine which model performed best. 
+Thus, we use a combination of accuracy and precision to determine which model performed best.
 
 For both Math and Portuguese students, the 3rd model that I tested performed the best, which contained only features on educational outcomes.
 
 This best model used measures on the following features:
-    
+
         ['absences', 'G3', 'activities', 'higher', 'studytime_2', 'studytime_3', 'studytime_4', 'failures_1', 'failures_2', 'failures_3', 'freetime_2', 'freetime_3', 'freetime_4', 'freetime_5', 'health_2', 'health_3', 'health_4', 'health_5']
 
 Using a 0.5 predicted probability threshold, we obtained the following evaluation metrics with this model:
@@ -121,21 +152,21 @@ Using a 0.5 predicted probability threshold, we obtained the following evaluatio
     Portuguese Students: 59% accuracy, 46% precision
 
 
-However, once I increased my threshold for prediction from 0.5 to 0.7, I found even better model performance. 
+However, once I increased my threshold for prediction from 0.5 to 0.7, I found even better model performance.
 
     Math Students: 69% accuracy, 68% precision
     Portuguese Students: 65% accuracy, 60% precision
-    
-    
+
+
 # Results & Analysis
 
-## Best Model: ROC Curves on Training Data 
+## Best Model: ROC Curves on Training Data
 
 ![](m_roc_train.png)
 
 ![](p_roc_train.png)
 
-## Best Model: ROC Curves on Test Data 
+## Best Model: ROC Curves on Test Data
 
 ![](m_roc_test.png)
 
@@ -149,16 +180,36 @@ However, once I increased my threshold for prediction from 0.5 to 0.7, I found e
 
 ## Coefficients and Initial Interpretation
 
-Focusing on students in Portuguese courses, the coefficients yielded from our best model were -0.558 for percentage points in the final grade and -0.657 for whether or not a student wanted to pursue higher education. This implies that higher grades do increase the odds that a student is in a relationship, and that a student's desire to pursue higher education increases these odds as well. 
+Focusing on students in Portuguese courses, the coefficients yielded from our best model were -0.558 for percentage points in the final grade and -0.657 for whether or not a student wanted to pursue higher education. This implies that higher grades do increase the odds that a student is in a relationship, and that a student's desire to pursue higher education increases these odds as well.
 
-### Math Student Coefficients from Holdout Data:
-{'absences': 0.038, 'G3': -1.166, 'activities': 0.134, 'higher': -1.11, 'studytime_2': 0.974, 'studytime_3': 1.134, 'studytime_4': -0.213, 'failures_1': -0.182, 'failures_2': 1.231, 'failures_3': -0.198, 'freetime_2': 0.925, 'freetime_3': 0.361, 'freetime_4': 0.513, 'freetime_5': 1.094, 'health_2': -0.134, 'health_3': 0.234, 'health_4': -0.2, 'health_5': 0.122}
+### Coefficients
+![](images/coeffs_bar.png)
 
-### Portuguese Student Coefficients from Holdout Data:
-{'absences': 0.044, 'G3': -0.558, 'activities': 0.229, 'higher': -0.657, 'studytime_2': 0.63, 'studytime_3': 1.0, 'studytime_4': -0.62, 'failures_1': 0.606, 'failures_2': 0.131, 'failures_3': -0.087, 'freetime_2': 0.635, 'freetime_3': 0.253, 'freetime_4': 0.046, 'freetime_5': 0.663, 'health_2': -0.294, 'health_3': -0.215, 'health_4': -0.508, 'health_5': -0.002}
+### Change in Odds of Being in a Relationship
+![](images/delta_odds_bar.png)
+
+## Significant Coefficients
+
+### Math Dataset
+|Feature | Significance Level | Percentage Change in Odds of being in a Relationship|
+|--- | --- |--- | --- |
+|Had 2 Prior Class Failures| 1% | +240.1%|
+|Final Math Grade| 1% | -5.8%|
+|Absences| 1% | +3.9%|
+|Study >10hrs Weekly| 10% | -18.8%|
+
+### Portuguese Dataset
+|Feature | Significance Level | Percentage Change in Odds of being in a Relationship|
+|--- | --- |--- | --- |
+|Absences| 1% | +4.4%|
+|Had 2 Prior Class Failures| 5% | +77.6%|
+|Study >10hrs Weekly| 5% | -45.6%|
+|Final Portuguese Grade| 5% | -3.8%|
+|Study 5-10hrs Weekly| 10% | +176.8%|
+
 
 ## Future Exploration / Research
-1. Further explore the interpretation of coefficients and confidence intervals for interpretation 
+1. Further explore the interpretation of coefficients and confidence intervals for interpretation
 
 2. Supplement Logistic Regression with AB testing
 
