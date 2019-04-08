@@ -7,7 +7,7 @@
 
 ## Using Student Educational Data to Predict Relationship Status
 
-Capstone I Project for Galvanize Data Science Immersive
+Capstone I Project for Galvanize Data Science Immersive, Week 4
 
 by Taite Sandefer
 
@@ -22,7 +22,7 @@ by Taite Sandefer
 - [Exploratory Data Analysis](#exploratory-data-analysis)
 - [Model Selection](#model-selection)
   - [Test Metric: F1 Score](#test-metric-f1-score)
-  - [Feature Selection](#model-selection)
+  - [Feature Selection](#feature-selection)
   - [Hyperparameter Tuning](#hyperparameter-tuning)
 - [Chosen Model](#chosen-model)
   - [Specifications](#specifications)
