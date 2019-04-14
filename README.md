@@ -36,30 +36,30 @@
 
 ## Background
 
-As a manager, it might be important to consider how your expectations of employees might impact their ability to maintain a healthy work-life balance, since worker productivity could depend on the degree to which basic needs have been met.
+As a manager, it is important to consider how your expectations of employees could impact their ability to maintain a healthy work-life balance, since worker productivity is dependent on the degree to which basic needs have been met.
 
 To borrow from Aristotle,
 > "Man is by nature a social animal."
 
 So, it seems that social connection might qualify as a basic human need that impacts productivity.
 
-But how do we help each other find the right level of social connection, so that we can thrive in that sweet spot between distraction and isolation?
-
 Aristotle also claims that
 > "Society precedes the individual... Anyone who either cannot lead the common life or is so self-sufficient as not to need to, and therefore does not partake of society, is either a beast or a god."
+
+But how do we help each other find the right level of social connection, so that we can thrive in that sweet spot between distraction and isolation?
 
 This two-tailed postulate suggests that people who are not actively social will tend to be on the extremes when it comes to performance. In general, is this true? When people develop close relationships with others, is their overall productivity inherently different from those who aren't as connected to others?
 
 ## The Data
 
-The University of Minho's Paulo Cortez and Alice Silva collected data regarding student grades, demographics, social and school related features on high school students during the 2005-6 school year in Portugal for the purpose of using data mining techniques to predict secondary school performance (http://www3.dsi.uminho.pt/pcortez/student.pdf).
+The University of Minho's Paulo Cortez and Alice Silva collected [this data](http://www3.dsi.uminho.pt/pcortez/student.pdf) regarding student grades, demographics, social and school related features on high school students during the 2005-6 school year in Portugal for the purpose of using data mining techniques to predict secondary school performance.
 
 Some of the data was obtained from school records, while information for other features was gathered through questionnaires conducted by Cortez and Silva.
 
 
 ## Question & Hypothesis
 
-For now, it might be useful to look at smaller-scale relationships between productivity and social connection. While we might not be able to collect data on all humans that precisely measures productivity and social activity, there is available data on social, demographic, and educational features that we might be able to leverage so that we might have a better understanding of this relationship.
+For now, it would be useful to look at smaller-scale relationships between productivity and social connection. While we might not be able to collect data on all humans that precisely measures productivity and social activity, there is available data on social, demographic, and educational features that we might be able to leverage so that we might have a better understanding of this relationship.
 
 Can we predict a student's relationship status based on their academic performance and outcomes?
 
@@ -71,7 +71,7 @@ MVP
 ## Methodology
 
 <p align="center">
-  <img src="images/process.png" width = 800>
+  <img src="images/method.png" width = 800>
 </p>
 
 # Exploratory Data Analysis
