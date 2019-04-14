@@ -7,9 +7,9 @@
 
 ## Using Student Educational Data to Predict Relationship Status
 
-Capstone I Project for Galvanize Data Science Immersive, Week 4
+*Capstone I Project for Galvanize Data Science Immersive, Week 4*
 
-by Taite Sandefer
+*by Taite Sandefer*
 
 *Last Updated: 4/4/19*
 
@@ -38,13 +38,15 @@ by Taite Sandefer
 
 As a manager, it might be important to consider how your expectations of employees might impact their ability to maintain a healthy work-life balance, since worker productivity could depend on the degree to which basic needs have been met.
 
-To borrow from Aristotle, "man is by nature a social animal."
+To borrow from Aristotle,
+> "Man is by nature a social animal."
 
 So, it seems that social connection might qualify as a basic human need that impacts productivity.
 
 But how do we help each other find the right level of social connection, so that we can thrive in that sweet spot between distraction and isolation?
 
-Aristotle also claims that "society precedes the individual," and that "anyone who either cannot lead the common life or is so self-sufficient as not to need to, and therefore does not partake of society, is either a beast or a god."
+Aristotle also claims that
+> "Society precedes the individual... Anyone who either cannot lead the common life or is so self-sufficient as not to need to, and therefore does not partake of society, is either a beast or a god."
 
 This two-tailed postulate suggests that people who are not actively social will tend to be on the extremes when it comes to performance. In general, is this true? When people develop close relationships with others, is their overall productivity inherently different from those who aren't as connected to others?
 
