@@ -71,7 +71,7 @@ MVP
 ## Methodology
 
 <p align="center">
-  <img src="images/method.png" width = 800>
+  <img src="images/methodology.png" width = 800>
 </p>
 
 # Exploratory Data Analysis
@@ -136,10 +136,15 @@ Evaluating the performance of 3 models with varying features:
 
     1. Full model uses all 69 predictors
     2. Secondary model uses 29 predictors, using demographic and educational performance features
-    3. Third model uses 18 predictors, focusing on outcomes only
+    3. Third model uses 18 predictors, focusing on educational outcomes only
 
 ## Hyperparameter Tuning 
-GridSearch for punishment and 
+Used SKLearn's GridSearch to find the best values for the following hyperparameters.
+
+| Hyperparameter | Math Dataset Optimal Value | Portuguese Dataset Optimal Value |
+|---|---|---|
+| penalty | 'l1' | 'l2' |
+| C (inverse of regularization param) | 7.743 | 1.0 |
 
 **Model Specs**
 
@@ -154,6 +159,8 @@ since the odds are 1:2 for being in the relationship class
 ## Specifications
     threshold=0.5
     class_weight = 'balanced'
+    penalty = l1 (MATH), l2 (PORTUGUESE)
+    C = 7.742636826811269 (MATH), 1.0 (PORTUGUESE)
 
 For both Math and Portuguese students, the 3rd model that I tested performed the best, which contained only features on educational outcomes.
 
@@ -168,14 +175,8 @@ This best model used measures on the following features:
 
 Using a 0.5 predicted probability threshold, we obtained the following evaluation metrics with this model:
 
-    Math Students: 57% accuracy, 42% precision
-    Portuguese Students: 59% accuracy, 46% precision
-
-
-However, once I increased my threshold for prediction from 0.5 to 0.7, I found even better model performance.
-
-    Math Students: 69% accuracy, 68% precision
-    Portuguese Students: 65% accuracy, 60% precision
+    Math Students: 46.1% F1 score
+    Portuguese Students: 50.1% F1 score
 
 
 ### ROC Curves on Training Data
@@ -206,14 +207,10 @@ However, once I increased my threshold for prediction from 0.5 to 0.7, I found e
 
 Focusing on students in Portuguese courses, the coefficients yielded from our best model were -0.558 for percentage points in the final grade and -0.657 for whether or not a student wanted to pursue higher education. This implies that higher grades do increase the odds that a student is in a relationship, and that a student's desire to pursue higher education increases these odds as well.
 
-### Coefficients
-<p align="center">
-  <img src="images/coeffs_bar.png" width = 400>
-</p>
 
 ### Change in Odds of Being in a Relationship
 <p align="center">
-  <img src="images/delta_odds_bar.png" width = 400>
+  <img src="images/delta_odds_plot.png" width = 400>
 </p>
 
 ## Significant Coefficients
@@ -239,14 +236,7 @@ Focusing on students in Portuguese courses, the coefficients yielded from our be
 
 
 # Conclusion
-## Future Exploration / Research
-1. Further explore the interpretation of coefficients and confidence intervals for interpretation
 
-2. Supplement Logistic Regression with AB testing
-
-3. Explore predictive abilities of educational characteristics & outcomes on other social connection statuses, such as "Pstatus," which reflects whether or not the student's parents are living in the same household
-
-4. Take IV/Proxy variable into account so we can generalize the information we've gathered from this evidence regarding these Portuguese high school students' social connectivity and educational outcomes towards larger populations, such as all high school students, or all humans working towards a task.
 
 # Acknowledgements
 ## Citation
