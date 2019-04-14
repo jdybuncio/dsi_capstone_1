@@ -74,6 +74,8 @@ MVP
   <img src="images/methodology.png" width = 800>
 </p>
 
+[Back to Top](#Table-of-Contents)
+
 # Exploratory Data Analysis
 
 ### Groups
@@ -113,6 +115,7 @@ So, as we can see from both of these plots, the grade features (G1, G2, and G3) 
 </p>
 
 
+[Back to Top](#Table-of-Contents)
 
 # Model Selection
 
@@ -122,7 +125,7 @@ Using SKLearn's LogisticRegression, since we are using our data to predict the p
 
 ### Cross Validation
 
-Using StratifiedKFold because it preserves the percentage of samples from each class.
+Using SKLearn's StratifiedKFold to preserves the percentage of samples from each class.
 
 ## Test Metric: F1 Score
 Since the hypothesis that students who are in a relationship simply perform differently than those who are not in a relationship is two-tailed in nature, it's equally desirable to reduce false positives and false negatives. 
@@ -146,6 +149,8 @@ Used SKLearn's GridSearch to find the best values for the following hyperparamet
 | penalty | 'l1' | 'l2' |
 | C (inverse of regularization param) | 7.743 | 1.0 |
 
+[Back to Top](#Table-of-Contents)
+
 # Chosen Model
 
 ## Specifications
@@ -165,7 +170,7 @@ This best model used measures on the following features:
 
 ### CV & Performance Metrics
 
-Using a 0.5 predicted probability threshold, we obtained the following evaluation metrics with this model:
+Using a 0.5 predicted probability threshold and 5-fold Cross Validation, we obtained the following evaluation metrics with this model:
 
     Math Students: 46.1% F1 score
     Portuguese Students: 50.1% F1 score
@@ -223,6 +228,7 @@ Using a 0.5 predicted probability threshold, we obtained the following evaluatio
 |Final Portuguese Grade| 5% | -3.8%|
 |Study 5-10hrs Weekly| 10% | +176.8%|
 
+[Back to Top](#Table-of-Contents)
 
 # Conclusion
 It does seem that there is a statistically significant difference between students who are in a relationship and those who are not for certain educational outcome characteristics. For both Portuguese and Math students, their final grades were statistically significant predictors of whether or not a given student is in a relationship. Interestingly, in both cases, a given student will have an average of 5.8% or 3.8% (respectively) lower odds of being in a relationship for each additional point they have for their final grade. 
@@ -233,6 +239,9 @@ Overall, it does seem that there's a difference in the educational performance a
 
 Therefore, the evidence presented in this study seems to refute the idea that "gods" and "beasts" are equally common among the less social, since it supports romantic social connection as being correlated with lower participation and performance in the community. However, it's important to note that this study is solely examining romantic partnership, which can often turn into a more isolating form of social connection that leads to less involvement in the greater community.  
 
+[Back to Top](#Table-of-Contents)
 
 # Citation
 *P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.*
+
+[Back to Top](#Table-of-Contents)
