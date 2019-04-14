@@ -17,7 +17,7 @@
 - [Introduction](#introduction)
   - [Background](#background)
   - [The Data](#the-data)
-  - [Question & Hypothesis](#question-&-hypothesis)
+  - [Question and Hypothesis](#question-and-hypothesis)
   - [Methodology](#methodology)
 - [Exploratory Data Analysis](#exploratory-data-analysis)
 - [Model Selection](#model-selection)
@@ -27,9 +27,9 @@
 - [Chosen Model](#chosen-model)
   - [Specifications](#specifications)
   - [Model Assessment](#model-assessment)
-  - [Results & Interpretation](#results-&-interpretation)
+  - [Results and Interpretation](#results-and-interpretation)
 - [Conclusion](#model-selection)
-- [Acknowledgements](#acknowledgements])
+- [Citation](#citation])
 
 
 # Introduction
@@ -57,7 +57,7 @@ The University of Minho's Paulo Cortez and Alice Silva collected [this data](htt
 Some of the data was obtained from school records, while information for other features was gathered through questionnaires conducted by Cortez and Silva.
 
 
-## Question & Hypothesis
+## Question and Hypothesis
 
 For now, it would be useful to look at smaller-scale relationships between productivity and social connection. While we might not be able to collect data on all humans that precisely measures productivity and social activity, there is available data on social, demographic, and educational features that we might be able to leverage so that we might have a better understanding of this relationship.
 
@@ -116,11 +116,11 @@ So, as we can see from both of these plots, the grade features (G1, G2, and G3) 
 
 # Model Selection
 
-### Logistic Regression
+## Logistic Regression
 
 Using SKLearn's LogisticRegression, since we are using our data to predict the probability of a binary variable being positive.
 
-**Cross Validation**
+### Cross Validation
 
 Using StratifiedKFold because it preserves the percentage of samples from each class.
 
@@ -145,14 +145,6 @@ Used SKLearn's GridSearch to find the best values for the following hyperparamet
 |---|---|---|
 | penalty | 'l1' | 'l2' |
 | C (inverse of regularization param) | 7.743 | 1.0 |
-
-**Model Specs**
-
-In logistic regression, it's important to specify:
-
-    class_weight = 'balanced'
-
-since the odds are 1:2 for being in the relationship class
 
 # Chosen Model
 
@@ -203,14 +195,11 @@ Using a 0.5 predicted probability threshold, we obtained the following evaluatio
 </p>
 
 
-## Results & Interpretation
-
-Focusing on students in Portuguese courses, the coefficients yielded from our best model were -0.558 for percentage points in the final grade and -0.657 for whether or not a student wanted to pursue higher education. This implies that higher grades do increase the odds that a student is in a relationship, and that a student's desire to pursue higher education increases these odds as well.
-
+## Results and Interpretation
 
 ### Change in Odds of Being in a Relationship
 <p align="center">
-  <img src="images/delta_odds_plot.png" width = 400>
+  <img src="images/delta_odds_plot.png" width = 800>
 </p>
 
 ## Significant Coefficients
@@ -236,8 +225,14 @@ Focusing on students in Portuguese courses, the coefficients yielded from our be
 
 
 # Conclusion
+It does seem that there is a statistically significant difference between students who are in a relationship and those who are not for certain educational outcome characteristics. For both Portuguese and Math students, their final grades were statistically significant predictors of whether or not a given student is in a relationship. Interestingly, in both cases, a given student will have an average of 5.8% or 3.8% (respectively) lower odds of being in a relationship for each additional point they have for their final grade. 
+
+In other words, students with higher final grades are less likely to be in relationships. However, the magnitude of this effect seems to be fairly small (a 3.8-5.8% change) compared to other predictors. For example, students who had 2 prior class failures had large increases in their odds of being in a relationship: for Math students, it was a 240% increase, while Portuguese students had an average of 77.6% increase in these odds. The number of absences and the amount of time that students spend studying on a weekly basis was also significant predictors for both groups. 
+
+Overall, it does seem that there's a difference in the educational performance and participation of students who are in a relationship compared to those who aren't. Interestingly, students who have higher numbers of absences, have a previous history of poor academic achievement, and who have lower final grades tend to have higher odds of being in a romantic relationship. 
+
+Therefore, the evidence presented in this study seems to refute the idea that "gods" and "beasts" are equally common among the less social, since it supports romantic social connection as being correlated with lower participation and performance in the community. However, it's important to note that this study is solely examining romantic partnership, which can often turn into a more isolating form of social connection that leads to less involvement in the greater community.  
 
 
-# Acknowledgements
-## Citation
-P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.
+# Citation
+*P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.*
