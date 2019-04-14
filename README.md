@@ -11,7 +11,6 @@
 
 *by Taite Sandefer*
 
-*Last Updated: 4/4/19*
 
 ## Table of Contents
 - [Introduction](#introduction)
