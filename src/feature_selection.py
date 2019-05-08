@@ -10,6 +10,8 @@ def make_training_Xy_dfs(potential_X_cols, df):
     return (df[X_col] for X_col in potential_X_cols)
 
 def k_fold_CV(X, y, desc, n_folds = 5, cw = 'balanced', threshold = 0.5):
+    '''Does k-fold CV by hand -- function written by Rosie Martinez (rosiemin) 
+    '''
     skf = StratifiedKFold(n_splits=n_folds, shuffle=False)
     auc_test = []
     accuracy_test = []
